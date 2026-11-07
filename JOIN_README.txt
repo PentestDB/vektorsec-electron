@@ -2,9 +2,9 @@
 =====================================================================
 
 ไฟล์เต็ม (full file) : VektorSec-Setup-1.2.4-customer.exe
-ขนาด (size)         : 344,943,451 bytes (≈ 329 MB)
-จำนวนพาร์ท (parts)   : 17 ไฟล์ × 20 MB (20 MiB = 20,971,520 bytes)
-SHA-256 ของไฟล์เต็ม  : EBF5A804CDBB087477AD0ABD444A2B76CEDE58FF6D925D7F20F491212641ABD7
+ขนาด (size)         : 345,005,284 bytes (≈ 329 MB)
+จำนวนพาร์ท (parts)   : 17 ไฟล์ × 20 MB (20,971,520 bytes)
+SHA-256 ของไฟล์เต็ม  : 338684A654571EFC5AA568A5746EAB96A124AFA65E5BE9993AA29BF59903F6D7
 
 ⚠️ ต้องมีครบทั้ง 17 ไฟล์ก่อนต่อ (all 17 parts are required).
 
@@ -30,13 +30,22 @@ SHA-256 ของไฟล์เต็ม  : EBF5A804CDBB087477AD0ABD444A2B76CED
 ตรวจสอบความถูกต้อง (verify) — ต้องได้ค่านี้
 ---------------------------------------------------------------------
     Get-FileHash .\VektorSec-Setup-1.2.4-customer.exe -Algorithm SHA256
-    EBF5A804CDBB087477AD0ABD444A2B76CEDE58FF6D925D7F20F491212641ABD7
+    338684A654571EFC5AA568A5746EAB96A124AFA65E5BE9993AA29BF59903F6D7
 
 หรือ (ไม่ต้องเปิด PowerShell):
     certutil -hashfile VektorSec-Setup-1.2.4-customer.exe SHA256
 
 ถ้า hash ไม่ตรง → ไฟล์พาร์ทใดพาร์ทหนึ่งเสีย/โหลดไม่ครบ ให้โหลดพาร์ทนั้นใหม่
 ถ้า hash ตรง → ดับเบิลคลิกไฟล์ .exe เพื่อติดตั้งได้เลย (อ่านวิธีติดตั้งใน README.md)
+
+---------------------------------------------------------------------
+ติดตั้งทับรุ่นเดิม (upgrade) — ทำแบบนี้ทุกครั้ง
+---------------------------------------------------------------------
+1) ปิดแอป VektorSec ให้สนิทก่อน (ตรวจใน Task Manager ว่าไม่มี VektorSec.exe /
+   node.exe ของ gateway เหลืออยู่) — ถ้าเปิดค้างไว้ ตัวติดตั้งจะเขียนไฟล์ทับไม่ได้
+   แล้วจะดูเหมือน " reinstalled แต่ไม่เปลี่ยน "
+2) ดับเบิลคลิกตัวติดตั้งที่ต่อเสร็จแล้ว → ติดตั้งทับตำแหน่งเดิมได้เลย
+3) เปิดแอปใหม่ ตรวจว่ารุ่นที่ Settings/หน้าแรกตรงกับ 1.2.4
 
 ---------------------------------------------------------------------
 ถ้า MongoDB ไม่ยอมสตาร์ท — ต้องลง Microsoft Visual C++ (x64)
@@ -62,22 +71,22 @@ SHA-256 ของไฟล์เต็ม  : EBF5A804CDBB087477AD0ABD444A2B76CED
 ---------------------------------------------------------------------
 Parts
 ---------------------------------------------------------------------
-VektorSec-Setup-1.2.4-customer.exe.001     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.002     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.003     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.004     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.005     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.006     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.007     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.008     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.009     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.010     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.011     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.012     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.013     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.014     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.015     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.016     20971520 bytes
-VektorSec-Setup-1.2.4-customer.exe.017      9399131 bytes
+  VektorSec-Setup-1.2.4-customer.exe.001     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.002     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.003     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.004     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.005     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.006     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.007     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.008     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.009     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.010     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.011     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.012     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.013     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.014     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.015     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.016     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.017      9460964 bytes
 
 ⚠️ Acceptable use: VektorSec is for authorized security testing only.

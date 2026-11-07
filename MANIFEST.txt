@@ -1,10 +1,11 @@
-﻿VektorSec 1.2.4 — split archive manifest
+﻿VektorSec 1.2.4 — split installer manifest
 
 original file : VektorSec-Setup-1.2.4-customer.exe
-size          : 344943451 bytes
-sha256        : EBF5A804CDBB087477AD0ABD444A2B76CEDE58FF6D925D7F20F491212641ABD7
+size          : 345005284 bytes
+sha256        : 338684A654571EFC5AA568A5746EAB96A124AFA65E5BE9993AA29BF59903F6D7
 chunk size    : 20971520 bytes (20 MiB)
 parts         : 17
+installer mtime: 2026-11-07T12:18:38.328Z
 
 part list:
   VektorSec-Setup-1.2.4-customer.exe.001     20971520 bytes
@@ -23,4 +24,4 @@ part list:
   VektorSec-Setup-1.2.4-customer.exe.014     20971520 bytes
   VektorSec-Setup-1.2.4-customer.exe.015     20971520 bytes
   VektorSec-Setup-1.2.4-customer.exe.016     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.017      9399131 bytes
+  VektorSec-Setup-1.2.4-customer.exe.017      9460964 bytes
