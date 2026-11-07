@@ -1,0 +1,2 @@
+# Split installer parts are opaque binaries: never diff, never count as source.
+*.exe.[0-9][0-9][0-9] binary linguist-vendored

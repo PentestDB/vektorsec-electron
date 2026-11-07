@@ -1,0 +1,26 @@
+﻿VektorSec 1.2.4 — split archive manifest
+
+original file : VektorSec-Setup-1.2.4-customer.exe
+size          : 344943451 bytes
+sha256        : EBF5A804CDBB087477AD0ABD444A2B76CEDE58FF6D925D7F20F491212641ABD7
+chunk size    : 20971520 bytes (20 MiB)
+parts         : 17
+
+part list:
+  VektorSec-Setup-1.2.4-customer.exe.001     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.002     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.003     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.004     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.005     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.006     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.007     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.008     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.009     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.010     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.011     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.012     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.013     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.014     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.015     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.016     20971520 bytes
+  VektorSec-Setup-1.2.4-customer.exe.017      9399131 bytes
