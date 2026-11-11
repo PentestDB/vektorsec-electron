@@ -1,10 +1,10 @@
-﻿VektorSec 1.2.4 — ไฟล์ติดตั้งแบบแบ่งพาร์ท / split installer parts
+﻿VektorSec 1.2.7 — ไฟล์ติดตั้งแบบแบ่งพาร์ท / split installer parts
 =====================================================================
 
-ไฟล์เต็ม (full file) : VektorSec-Setup-1.2.4-customer.exe
-ขนาด (size)         : 345,005,284 bytes (≈ 329 MB)
+ไฟล์เต็ม (full file) : VektorSec-Setup-1.2.7-customer.exe
+ขนาด (size)         : 352,176,754 bytes (≈ 336 MB)
 จำนวนพาร์ท (parts)   : 17 ไฟล์ × 20 MB (20,971,520 bytes)
-SHA-256 ของไฟล์เต็ม  : 338684A654571EFC5AA568A5746EAB96A124AFA65E5BE9993AA29BF59903F6D7
+SHA-256 ของไฟล์เต็ม  : 5F70317F07B2E6C531437E04F11EEF2075285DBC950638BD2C23BEF0E30F060A
 
 ⚠️ ต้องมีครบทั้ง 17 ไฟล์ก่อนต่อ (all 17 parts are required).
 
@@ -13,27 +13,27 @@ SHA-256 ของไฟล์เต็ม  : 338684A654571EFC5AA568A5746EAB96A12
 ---------------------------------------------------------------------
 
 [A] ดับเบิลคลิก JOIN.bat   ← ง่ายที่สุด (ต่อไฟล์ + ตรวจ SHA-256 ให้เลย)
-    ต้องวางไฟล์ VektorSec-Setup-1.2.4-customer.exe.001 … .017 ไว้ในโฟลเดอร์เดียวกัน
+    ต้องวางไฟล์ VektorSec-Setup-1.2.7-customer.exe.001 … .017 ไว้ในโฟลเดอร์เดียวกัน
 
 [B] Command Prompt (cmd) — เข้าไปในโฟลเดอร์นี้แล้วรัน:
-    copy /b VektorSec-Setup-1.2.4-customer.exe.001+VektorSec-Setup-1.2.4-customer.exe.002+VektorSec-Setup-1.2.4-customer.exe.003+...+"VektorSec-Setup-1.2.4-customer.exe" VektorSec-Setup-1.2.4-customer.exe
+    copy /b VektorSec-Setup-1.2.7-customer.exe.001+VektorSec-Setup-1.2.7-customer.exe.002+VektorSec-Setup-1.2.7-customer.exe.003+...+"VektorSec-Setup-1.2.7-customer.exe" VektorSec-Setup-1.2.7-customer.exe
 
 [C] PowerShell:
-    $parts = Get-ChildItem 'VektorSec-Setup-1.2.4-customer.exe.0*' | Sort-Object Name
-    $out = [System.IO.File]::Create("$PWD\VektorSec-Setup-1.2.4-customer.exe")
+    $parts = Get-ChildItem 'VektorSec-Setup-1.2.7-customer.exe.0*' | Sort-Object Name
+    $out = [System.IO.File]::Create("$PWD\VektorSec-Setup-1.2.7-customer.exe")
     foreach ($p in $parts) { $fs = [System.IO.File]::OpenRead($p.FullName); $fs.CopyTo($out); $fs.Close() }
     $out.Close()
 
-[D] 7-Zip: คลิกขวาที่ไฟล์ VektorSec-Setup-1.2.4-customer.exe.001 → 7-Zip → Extract here (7-Zip ต่อให้อัตโนมัติ)
+[D] 7-Zip: คลิกขวาที่ไฟล์ VektorSec-Setup-1.2.7-customer.exe.001 → 7-Zip → Extract here (7-Zip ต่อให้อัตโนมัติ)
 
 ---------------------------------------------------------------------
 ตรวจสอบความถูกต้อง (verify) — ต้องได้ค่านี้
 ---------------------------------------------------------------------
-    Get-FileHash .\VektorSec-Setup-1.2.4-customer.exe -Algorithm SHA256
-    338684A654571EFC5AA568A5746EAB96A124AFA65E5BE9993AA29BF59903F6D7
+    Get-FileHash .\VektorSec-Setup-1.2.7-customer.exe -Algorithm SHA256
+    5F70317F07B2E6C531437E04F11EEF2075285DBC950638BD2C23BEF0E30F060A
 
 หรือ (ไม่ต้องเปิด PowerShell):
-    certutil -hashfile VektorSec-Setup-1.2.4-customer.exe SHA256
+    certutil -hashfile VektorSec-Setup-1.2.7-customer.exe SHA256
 
 ถ้า hash ไม่ตรง → ไฟล์พาร์ทใดพาร์ทหนึ่งเสีย/โหลดไม่ครบ ให้โหลดพาร์ทนั้นใหม่
 ถ้า hash ตรง → ดับเบิลคลิกไฟล์ .exe เพื่อติดตั้งได้เลย (อ่านวิธีติดตั้งใน README.md)
@@ -45,7 +45,7 @@ SHA-256 ของไฟล์เต็ม  : 338684A654571EFC5AA568A5746EAB96A12
    node.exe ของ gateway เหลืออยู่) — ถ้าเปิดค้างไว้ ตัวติดตั้งจะเขียนไฟล์ทับไม่ได้
    แล้วจะดูเหมือน " reinstalled แต่ไม่เปลี่ยน "
 2) ดับเบิลคลิกตัวติดตั้งที่ต่อเสร็จแล้ว → ติดตั้งทับตำแหน่งเดิมได้เลย
-3) เปิดแอปใหม่ ตรวจว่ารุ่นที่ Settings/หน้าแรกตรงกับ 1.2.4
+3) เปิดแอปใหม่ ตรวจว่ารุ่นที่ Settings/หน้าแรกตรงกับ 1.2.7
 
 ---------------------------------------------------------------------
 ถ้า MongoDB ไม่ยอมสตาร์ท — ต้องลง Microsoft Visual C++ (x64)
@@ -71,22 +71,22 @@ SHA-256 ของไฟล์เต็ม  : 338684A654571EFC5AA568A5746EAB96A12
 ---------------------------------------------------------------------
 Parts
 ---------------------------------------------------------------------
-  VektorSec-Setup-1.2.4-customer.exe.001     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.002     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.003     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.004     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.005     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.006     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.007     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.008     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.009     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.010     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.011     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.012     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.013     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.014     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.015     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.016     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.017      9460964 bytes
+  VektorSec-Setup-1.2.7-customer.exe.001     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.002     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.003     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.004     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.005     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.006     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.007     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.008     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.009     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.010     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.011     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.012     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.013     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.014     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.015     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.016     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.017     16632434 bytes
 
 ⚠️ Acceptable use: VektorSec is for authorized security testing only.

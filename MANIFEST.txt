@@ -1,27 +1,27 @@
-﻿VektorSec 1.2.4 — split installer manifest
+﻿VektorSec 1.2.7 — split installer manifest
 
-original file : VektorSec-Setup-1.2.4-customer.exe
-size          : 345005284 bytes
-sha256        : 338684A654571EFC5AA568A5746EAB96A124AFA65E5BE9993AA29BF59903F6D7
+original file : VektorSec-Setup-1.2.7-customer.exe
+size          : 352176754 bytes
+sha256        : 5F70317F07B2E6C531437E04F11EEF2075285DBC950638BD2C23BEF0E30F060A
 chunk size    : 20971520 bytes (20 MiB)
 parts         : 17
-installer mtime: 2026-11-07T12:18:38.328Z
+installer mtime: 2026-11-11T03:14:03.387Z
 
 part list:
-  VektorSec-Setup-1.2.4-customer.exe.001     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.002     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.003     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.004     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.005     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.006     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.007     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.008     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.009     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.010     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.011     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.012     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.013     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.014     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.015     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.016     20971520 bytes
-  VektorSec-Setup-1.2.4-customer.exe.017      9460964 bytes
+  VektorSec-Setup-1.2.7-customer.exe.001     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.002     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.003     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.004     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.005     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.006     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.007     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.008     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.009     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.010     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.011     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.012     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.013     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.014     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.015     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.016     20971520 bytes
+  VektorSec-Setup-1.2.7-customer.exe.017     16632434 bytes

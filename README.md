@@ -1,15 +1,20 @@
 # 🛡️ VektorSec — Customer Quick Start
 
-**Windows desktop build** · version **1.2.4** · PentestDB @ Developer By Raysiya
+**Windows + Linux (x64)** · version **1.2.7** · PentestDB @ Developer By Raysiya
 
 > ⚠️ **Authorized testing only.** VektorSec is for penetration tests you are allowed to
 > perform (work inside an agreed scope), CTF / boot2root labs and systems you own. Using it
 > against systems you have no written permission to test is illegal, and you are responsible
 > for everything you run. See §10 below.
 
-This page is the short version: install → first login → license → hand over the report and logs.
-The complete walkthrough (local-database options, offline machines, every troubleshooting case,
-update, uninstall) is in **[INSTALL.md](./INSTALL.md)**. คู่มือภาษาไทย: **[README.th.md](./README.th.md)**.
+This page is the short version for **both platforms**: install → first login → license → hand over
+the report and logs.
+
+| What you received | Where to go |
+|---|---|
+| `VektorSec-Setup-1.2.7-customer.exe` (Windows installer) | §4 below, full walkthrough in **[INSTALL.md](./INSTALL.md)** |
+| `VektorSec-1.2.7-customer-linux-x64.tar.gz` (or `.tar.gz.001 …` parts) | **§4B** below, full walkthrough in **[INSTALL-linux.md](./INSTALL-linux.md)** / [EN](./INSTALL-linux.en.md) |
+| คู่มือภาษาไทย | **[README.th.md](./README.th.md)** · **[INSTALL-linux.md](./INSTALL-linux.md)** |
 
 ---
 
@@ -31,9 +36,15 @@ update, uninstall) is in **[INSTALL.md](./INSTALL.md)**. คู่มือภ�
 
 ## ⚡ TL;DR
 
+> **Which file did I get?** `…-customer.exe` → **Windows** (first block). `…-customer-linux-x64.tar.gz`
+> (or the `.tar.gz.001 …` parts) → **Linux** (second block). Same 1.2.7 build, different platform.
+> **Both builds are paid-only: there is no free trial — the first screen asks for a license key.**
+
+**Windows 10 / 11 (x64)** — powershell
+
 ```powershell
 # 1. Verify the installer you received (compare with the hash the vendor sent you)
-Get-FileHash ".\VektorSec-Setup-1.2.4-customer.exe" -Algorithm SHA256
+Get-FileHash ".\VektorSec-Setup-1.2.7-customer.exe" -Algorithm SHA256
 
 # 2. Run the installer (no Administrator rights needed, per-user install)
 #    Windows SmartScreen: "More info" → "Run anyway"
@@ -48,17 +59,44 @@ powershell -ExecutionPolicy Bypass -File "$install\resources\app\scripts\local-d
 #    nothing printed -> install it once (the only step that asks for Administrator):
 & "$env:APPDATA\VektorSec\runtime\mongodb\bin\vc_redist.x64.exe"
 
-# 5. Start VektorSec from the desktop shortcut, then log in (passwords: §4)
+# 5. Start VektorSec from the desktop shortcut — the window shows the activation wall:
+#    copy the Machine ID (HWID) → send it to the vendor → paste the VEKL1. key (§5)
 
 # 6. Add your AI model: Settings → Models → add a preset + API key → assign Orchestrator
 ```
 
-- ✅ **No Docker** required (Docker is only used if you want a Kali sandbox container).
-- ✅ **No Administrator rights** required — the app and its data stay in your user profile.
-- ⏳ **15-day free trial** starts on the first launch, bound to that machine (HWID) — no key and
-  no card needed up front.
-- ⚠️ **MongoDB + Redis must be installed once** (step 3). Without them the login page answers
-  `Gateway upstream error` — the #1 support question.
+**Linux — Ubuntu 20.04+ / Debian 11+ / Kali (x64)** — bash, needs sudo
+
+```bash
+# 0. If you received .001 .002 … parts: join + verify first (details in §4B)
+cat VektorSec-1.2.7-customer-linux-x64.tar.gz.0* > VektorSec-1.2.7-customer-linux-x64.tar.gz
+sha256sum -c VektorSec-1.2.7-customer-linux-x64.tar.gz.sha256      # must print OK
+
+# 1. Unpack and install (Node 22 + MongoDB 7 + Redis + systemd unit, ~10 min)
+tar xzf VektorSec-1.2.7-customer-linux-x64.tar.gz
+cd vektorsec-1.2.7
+sudo bash install.sh
+#    Node 22 / MongoDB / Redis already installed?  sudo bash install.sh --no-deps
+
+# 2. Open http://<server-ip>:3001 in a browser (port 3001, also serves /api)
+#    First screen = activation: copy the Machine ID (HWID) → send it to the vendor
+#    → paste the VEKL1. key back. One key = one machine.
+
+# 3. Log in as admin@vektorsec.local (random password, printed once):
+sudo grep -i 'Temporary password' /var/lib/vektorsec/logs/backend.log
+
+# 4. Add your AI model: Settings → Models → add a preset + API key → assign Orchestrator
+```
+
+- ✅ **No Docker** required on either platform (Docker is only used if you want a Kali sandbox container).
+- ✅ **Windows:** no Administrator rights — the app and its data stay in your user profile.
+- ✅ **Linux:** one `install.sh` installs everything (Node 22, MongoDB 7.0, Redis, systemd service,
+  auto-start) and only reports success once `GET /api/ready` answers `200`.
+- 🔑 **Paid-only, there is no free trial.** The first screen — the Windows window or
+  `http://<ip>:3001` on Linux — is the activation wall: copy the **Machine ID (HWID)**, send it to the
+  vendor, paste the `VEKL1.` key you get back. One key = one machine. See §5.
+- ⚠️ **Windows only: MongoDB + Redis must be installed once** (step 3). Without them the login page
+  answers `Gateway upstream error` — the #1 support question. On Linux the installer does it for you.
 - 🧩 **MongoDB also needs the Microsoft Visual C++ 2015–2022 runtime (x64)** (step 4) —
   `mongod.exe` links against `MSVCP140.dll` / `VCRUNTIME140.dll`. VektorSec itself and Redis do
   **not** need it. The MongoDB zip ships `vc_redist.x64.exe`; if the database will not start, run
@@ -94,11 +132,15 @@ the evidence.
 
 | File | What it is |
 |---|---|
-| `VektorSec-Setup-1.2.4-customer.exe` | The installer (≈ 567 MB). It embeds the Electron/Node runtime, so no Node.js, pnpm or Docker has to be installed. |
-| `README.md` | This quick start. |
+| `VektorSec-Setup-1.2.7-customer.exe` | **Windows installer** (≈ 352 MB). It embeds the Electron/Node runtime, so no Node.js, pnpm or Docker has to be installed. |
+| `VektorSec-1.2.7-customer-linux-x64.tar.gz` | **Linux bundle** (≈ 537 MB) for Ubuntu / Debian / Kali x64 — contains `install.sh`, the app and the guides. |
+| `*.exe.001 … .0NN` / `*.tar.gz.001 … .0NN` | The same files split into 20 MiB parts (GitHub / Telegram / Drive). **Join them first** — `JOIN.bat` on Windows, `JOIN-linux.sh` (or §4B) on Linux. |
+| `*.sha256` | The SHA-256 published for each archive. Compare it **before** you install anything. |
+| `MANIFEST.txt` / `MANIFEST-linux.txt` | Size, hash and the exact part list of each split archive — use it to spot a part that downloaded badly. |
+| `README.md` | This quick start (Windows + Linux). |
 | `README.th.md` | The same quick start in Thai. |
-| `INSTALL.md` | The full installation, configuration, verification and troubleshooting guide. |
-| `EULA.txt` / `LICENSE` | The agreement the installer shows, and the Business Source License 1.1 of the product. Both are also copied to `<install>\resources\`. |
+| `INSTALL.md` | Windows: the full installation, configuration, verification and troubleshooting guide. |
+| `INSTALL-linux.md` / `INSTALL-linux.en.md` | Linux: the full guide (Thai / English) — paths, ports, ports in `ufw`, MongoDB on Kali, backup, update, uninstall. |
 | `pic/` (`01-landing.jpg` … `04-practice-targets.jpg`) | The four screenshots used in this guide — **not needed to install**. |
 
 Older installers (`1.2.1`, `1.2.2`) may still sit next to this one — **always install the newest
@@ -110,11 +152,11 @@ version**; upgrading keeps your data.
 
 | Item | Minimum | Notes |
 |---|---|---|
-| OS | Windows 10 / 11 (x64) or Windows Server 2016+ | ARM is not supported |
+| OS | **Windows** 10 / 11 (x64), Server 2016+ · **Linux** Ubuntu 20.04+ / Debian 11+ / Kali (x64) | ARM is not supported on either platform |
 | RAM | 4 GB (8 GB recommended) | More if you also run a Kali container |
-| Free disk | ≥ 3 GB | App ≈ 700 MB + local database ≈ 700 MB + your data |
+| Free disk | Windows ≥ 3 GB · Linux ≥ 5 GB | App ≈ 700 MB + local database ≈ 700 MB + your data |
 | Internet | Once, for the database install | Downloads MongoDB + Redis; afterwards everything runs locally |
-| Rights | Normal user | Per-user install; no Administrator needed |
+| Rights | Windows: normal user · Linux: root / `sudo` | Windows is a per-user install; the Linux installer writes to `/opt/vektorsec` and `/var/lib/vektorsec` |
 | Docker | Not required | Only for the optional Sandbox / Kali container |
 | VC++ runtime | Microsoft Visual C++ 2015–2022 (x64) | Needed by **MongoDB only** (`mongod.exe` → `MSVCP140.dll` / `VCRUNTIME140.dll`). Windows usually has it; the MongoDB zip ships `vc_redist.x64.exe` — see Step 3 |
 | AI model access | One API key | VektorSec brings the agent, **not** the model: use your own OpenAI / Anthropic / OpenAI-compatible key |
@@ -126,7 +168,7 @@ version**; upgrading keeps your data.
 ### Step 1 — Verify the file
 
 ```powershell
-Get-FileHash ".\VektorSec-Setup-1.2.4-customer.exe" -Algorithm SHA256 | Format-List
+Get-FileHash ".\VektorSec-Setup-1.2.7-customer.exe" -Algorithm SHA256 | Format-List
 ```
 
 Compare the value with the SHA-256 the vendor published. If it differs, do not run the file — ask
@@ -226,42 +268,141 @@ AUTH_REQUIRE_2FA_SETUP=0
 **Orchestrator**. Optionally assign **Racers** (parallel agents) and a **Browser Agent** model.
 Model usage is billed by your provider, not by VektorSec.
 
-### Step 6 — Open the license page
+### Step 6 — Activate the license
 
-Go to **/license**. It shows the state (trial, days left, licensed, expired) and your **Machine ID
-(HWID)**. Nothing else is needed while the trial runs — see §5.
+The app is locked until a key for **this** machine is activated — see §5. The activation wall shows
+your **Machine ID (HWID)** with a copy button; **/license** shows the same HWID plus the license state
+(never activated / active / expired) and your token balance.
 
 ---
 
-## 5. 🔑 Trial and licensing at a glance
+## 4B. 🐧 Install on Linux (Ubuntu / Debian / Kali)
+
+The Linux bundle is a **tar.gz**, not an installer: one script puts the app under `/opt/vektorsec`,
+the data under `/var/lib/vektorsec`, and registers a `systemd` service. Everything runs on the
+server — you use it from any browser on the network, nothing is installed on the client.
+
+### B.1 What the machine needs
+
+| Item | Minimum | Notes |
+|---|---|---|
+| OS | Ubuntu 20.04+ / Debian 11+ / Kali (x64) | Raspberry Pi / ARM is not supported |
+| RAM | 4 GB (8 GB recommended) | MongoDB + Redis + backend + UI on one box |
+| Free disk | 5 GB | App ≈ 900 MB, database grows with your engagements |
+| Rights | `root` / `sudo` | Writes `/opt/vektorsec`, `/var/lib/vektorsec`, `/etc/systemd/system` |
+| Network | Port **3001** reachable from the browser | `install.sh` opens it in `ufw` when `ufw` is active |
+| Internet | Once, for the dependency install | `--no-deps` skips it when Node 22 + MongoDB + Redis already exist |
+
+### B.2 Join the parts (only if you received `.001 … .0NN`)
+
+```bash
+# all parts in one folder, then either
+bash JOIN-linux.sh
+
+# …or by hand — order matters (.001 first)
+cat VektorSec-1.2.7-customer-linux-x64.tar.gz.0* > VektorSec-1.2.7-customer-linux-x64.tar.gz
+sha256sum -c VektorSec-1.2.7-customer-linux-x64.tar.gz.sha256     # must print OK
+```
+
+`MANIFEST-linux.txt` lists the size of every part — if one is short, download that part again.
+**Do not install when the hash does not match.**
+
+### B.3 Install
+
+```bash
+tar xzf VektorSec-1.2.7-customer-linux-x64.tar.gz
+cd vektorsec-1.2.7
+sudo bash install.sh
+
+# options
+sudo bash install.sh --no-deps       # Node 22 / MongoDB / Redis already installed
+sudo bash install.sh --port 8080     # UI on another port (written to /etc/default/vektorsec)
+bash install.sh --help               # everything else
+```
+
+The last line must read **`backend พร้อมใช้งาน — GET http://127.0.0.1:3001/api/ready = 200`**.
+`install.sh` waits up to **240 s** for that endpoint (`VEKTORSEC_READY_TIMEOUT=600 sudo -E bash install.sh`
+to extend it) and **fails loudly** with the logs if the stack never becomes ready — it never claims
+success for a half-started install. If it fails, the reason is in
+`/var/lib/vektorsec/logs/backend.log` and `journalctl -u vektorsec`.
+
+### B.4 First launch
+
+1. Open **`http://<server-ip>:3001`** (or `http://127.0.0.1:3001` on the box itself).
+2. The activation wall appears — copy the **Machine ID (HWID)** and send it to the vendor (§5).
+3. Paste the `VEKL1.` key → **Activate**. The app unlocks for that machine.
+4. Log in. The built-in administrator is **`admin@vektorsec.local`**; its random password is printed
+   **once** on the first start:
+
+```bash
+sudo grep -i 'Temporary password' /var/lib/vektorsec/logs/backend.log
+```
+
+Sign up a normal `user` account for daily work instead of using the admin account.
+
+### B.5 Verify
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:3001/            # 200 = UI
+curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:3001/api/ready   # 200 = backend+DB
+curl -s http://127.0.0.1:3001/local/hwid                                   # the HWID as JSON
+sudo systemctl status vektorsec --no-pager
+```
+
+### B.6 Day-to-day
+
+| Task | Command |
+|---|---|
+| Logs | `sudo journalctl -u vektorsec -f` · `/var/lib/vektorsec/logs/{backend,frontend}.log` |
+| Restart after editing `/etc/default/vektorsec` | `sudo systemctl restart vektorsec` |
+| Backup (do it before every update) | `sudo systemctl stop vektorsec && sudo tar czf vk-backup-$(date +%F).tgz -C /var/lib/vektorsec data` |
+| **Update** to a newer bundle | unpack the new tarball → `sudo bash install.sh` (stops the service, replaces `/opt/vektorsec/app`, **keeps** `/var/lib/vektorsec/data` + `license.key`) |
+| Uninstall (keep data) | `sudo systemctl disable --now vektorsec && sudo rm -rf /opt/vektorsec/app /etc/systemd/system/vektorsec.service` |
+| Uninstall completely (also deletes the license + engagements) | …then `sudo rm -rf /var/lib/vektorsec` |
+
+### B.7 Kali / Debian 13 — MongoDB key errors
+
+If the MongoDB repo is rejected (`is not signed`, `SHA1 is not considered secure`), install with
+`--no-deps` and use the MongoDB 7.0 server package, or follow the workaround in
+**[INSTALL-linux.md §9](./INSTALL-linux.md)**. Everything else (Node, Redis, the app) installs
+normally.
+
+---
+
+## 5. 🔑 Licensing and activation
+
+Both customer builds are **paid-only** (the build pins `VEKTORSEC_TRIAL_ACTIVATION_REQUIRED=on`):
+there is **no free trial**, and the app stays locked until a key that matches this machine is
+activated.
 
 | State | What happens |
 |---|---|
-| **No key yet** | A **15-day free trial** starts automatically on the first launch, bound to the machine HWID. No key, no card, no e-mail. |
-| **Trial running** | Everything works; a banner starts counting down when ≤ 7 days remain. |
-| **Trial over / invalid key** | Tool APIs answer `402 LICENSE_REQUIRED` and `/license` shows the activation panel. Login and the license page always stay reachable, so you can activate at any time. |
-| **Key present** | Verified **offline** against the vendor's public key + HWID + expiry. A key for another machine, an expired key or a tampered file re-locks the app immediately (fail-closed). A key covers **30 days** from the day you activate it. |
+| **No key yet** | The first screen is the **activation wall** — Windows: the app window; Linux: `http://<ip>:3001`. It shows a **License Key** field and your **Machine ID (HWID)** with a copy button. Only the activation screen, login and `/license` are reachable; every tool is locked. |
+| **Key present** | Verified **offline** against the vendor's public key + HWID + expiry. A key for another machine, an expired key or a tampered license file re-locks the app immediately (fail-closed). |
+| **Invalid / expired key** | Tool APIs answer `402 LICENSE_REQUIRED` and the activation panel comes back. Login and `/license` always stay reachable, so you can activate at any time. |
 
 **How to activate**
 
-1. Open **/license** → **Copy HWID**.
+1. Read the **Machine ID (HWID)** from the activation wall (it is also on **/license** →
+   *Copy HWID*, and as JSON at `http://127.0.0.1:3001/local/hwid`).
 2. Send the HWID to the vendor ([Telegram @PentestDB](https://t.me/PentestDB)) with the package
    you want.
 3. You receive a key that starts with **`VEKL1.`**.
-4. Paste it into **License key** → **Activate license**. The banner disappears and every tool is
-   unlocked.
+4. Paste it into **License Key** → **Activate license**. The wall disappears and every tool is
+   unlocked. The key file lands in `%APPDATA%\VektorSec\data\license.key` (Windows) or
+   `/var/lib/vektorsec/data/license.key` (Linux) — keep the backup you made.
 
 **Renewals** (USDT or invoice, per your agreement): pay first, then send the transaction hash/TxID
 **and** your HWID. The *Top Up* panel on `/license` assembles that message for you (TxID + HWID +
 package). In this build the verification is manual — the key does not appear by itself.
 
 - **1 license = 1 machine.** Reinstalling on the same machine keeps the HWID, so the same key
-  keeps working; a new machine or a fresh Windows install needs a new key.
+  keeps working; a new machine or a fresh OS install (Windows or Linux) needs a new key.
 - **30 days per activation.** A key is a voucher, not a subscription: it grants **30 days counted
   from the day you activate it** (not the day it was issued — a key that waited a week in your
   inbox still gives a full 30 days), and `/license` shows the exact end date. Renewing with a new
   key grants another 30 days from that moment; leftover days are not carried over, and re-pasting
-  the same key does not restart the 30 days. The 15 free trial days come first and are separate.
+  the same key does not restart the 30 days.
 - **10,000 tokens free, 10,000 per key — one pack ≈ 30 days of normal use.** Usage is metered
   from the agent's own token count: the machine starts with 10,000 free tokens, they go down as
   you work, and each new key adds 10,000 more — 500 THB, or the USDT equivalent at the time of
@@ -403,7 +544,7 @@ All four listen on `127.0.0.1` only — nothing is exposed to your network.
 | `The argument 'scripts\local-db.ps1' … does not exist` | You used a path relative to the source repo | Use the full path: `"$install\resources\app\scripts\local-db.ps1"` |
 | Blank / hanging window | Cold start needs 10–20 s, or port 3001 is taken by another program | Wait; then `Get-NetTCPConnection -LocalPort 3001` and close whatever owns it |
 | A QR code asks for 2FA at login | Secure default of the backend | Scan it once, or set `AUTH_REQUIRE_2FA_SETUP=0` in `%APPDATA%\VektorSec\data\.env` and restart |
-| `402 LICENSE_REQUIRED` in the tools | The 15-day trial ended, or the key does not match this machine | `/license` → paste a valid key for **this** HWID |
+| `402 LICENSE_REQUIRED` in the tools | No key activated on this machine yet, the key expired, or it was issued for a different HWID | `/license` → paste a valid key for **this** HWID |
 | `mongod.exe` exits at once, `status` shows **27017 shut**, Event Viewer mentions `MSVCP140.dll` | The Microsoft Visual C++ 2015–2022 runtime (x64) is missing — MongoDB needs it, Redis and VektorSec do not | Run `& "$env:APPDATA\VektorSec\runtime\mongodb\bin\vc_redist.x64.exe"` once (Administrator), then `local-db.ps1 start` |
 
 The full list — unknown admin password, ports in use, offline machines, database restarts, update
@@ -444,7 +585,7 @@ When you write, include:
 
 <div align="center">
 
-**VektorSec 1.2.4 — customer build**
+**VektorSec 1.2.7 — customer build (Windows + Linux)**
 PentestDB @ Developer By Raysiya
 
 *Authorized testing only*

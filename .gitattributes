@@ -1,2 +1,9 @@
 # Split installer parts are opaque binaries: never diff, never count as source.
 *.exe.[0-9][0-9][0-9] binary linguist-vendored
+*.tar.gz.[0-9][0-9][0-9] binary linguist-vendored
+*.blockmap binary linguist-vendored
+
+# Everything that runs on Linux must stay LF even in a Windows checkout with autocrlf=true
+*.sh text eol=lf
+*.sha256 text eol=lf
+*.md text eol=lf

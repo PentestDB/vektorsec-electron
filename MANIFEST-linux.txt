@@ -1,0 +1,40 @@
+﻿VektorSec 1.2.7 — split Linux bundle manifest
+
+original file : VektorSec-1.2.7-customer-linux-x64.tar.gz
+size          : 562721334 bytes
+sha256        : 962E601E83BCA2DA47432EC2A13058AD6C0BB4F7F354E99B487290C8E664212D
+chunk size    : 20971520 bytes (20 MiB)
+parts         : 27
+tarball mtime : 2026-11-11T04:21:27.122Z
+
+part list:
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.001     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.002     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.003     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.004     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.005     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.006     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.007     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.008     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.009     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.010     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.011     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.012     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.013     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.014     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.015     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.016     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.017     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.018     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.019     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.020     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.021     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.022     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.023     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.024     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.025     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.026     20971520 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.027     17461814 bytes
+
+join (Linux / macOS):  bash JOIN-linux.sh
+join (any OS):         cat VektorSec-1.2.7-customer-linux-x64.tar.gz.0* > VektorSec-1.2.7-customer-linux-x64.tar.gz
