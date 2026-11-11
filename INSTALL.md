@@ -1,6 +1,6 @@
 # 🛠️ VektorSec — Installation & Setup Guide
 
-**Windows desktop build** · version **1.2.4** · PentestDB @ Developer By Raysiya
+**Windows desktop build** · version **1.2.7** · PentestDB @ Developer By Raysiya
 
 > ⚠️ **Authorized testing only.** Use VektorSec only against systems you own or are
 > contractually permitted to test. You are responsible for your actions.
@@ -62,8 +62,8 @@ required** — the installer embeds its own runtime.
 ### 2.1 Check the file before running it
 
 ```powershell
-Get-FileHash ".\VektorSec-Setup-1.2.4-customer.exe" -Algorithm SHA256 | Format-List
-(Get-Item ".\VektorSec-Setup-1.2.4-customer.exe").Length
+Get-FileHash ".\VektorSec-Setup-1.2.7-customer.exe" -Algorithm SHA256 | Format-List
+(Get-Item ".\VektorSec-Setup-1.2.7-customer.exe").Length   # must be 352176754
 ```
 
 Compare both values with the ones the vendor published for this file. **If they differ, stop
@@ -71,7 +71,7 @@ and request a fresh copy** — do not run it.
 
 ### 2.2 Run the installer
 
-1. Double-click `VektorSec-Setup-1.2.4-customer.exe`.
+1. Double-click `VektorSec-Setup-1.2.7-customer.exe`.
 2. SmartScreen may warn *"Windows protected your PC"* (the build has no commercial code-signing
    certificate) → **More info** → **Run anyway**.
 3. **Next** → read and accept the EULA → choose the destination folder (default
@@ -597,7 +597,7 @@ re-creating workspaces over copying a live database from a running instance.
 
 <div align="center">
 
-**VektorSec 1.2.4 — customer build**
+**VektorSec 1.2.7 — customer build**
 PentestDB @ Developer By Raysiya
 
 *Authorized testing only*
