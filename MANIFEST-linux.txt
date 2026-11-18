@@ -1,11 +1,11 @@
 ﻿VektorSec 1.2.7 — split Linux bundle manifest
 
 original file : VektorSec-1.2.7-customer-linux-x64.tar.gz
-size          : 562721334 bytes
-sha256        : 962E601E83BCA2DA47432EC2A13058AD6C0BB4F7F354E99B487290C8E664212D
+size          : 563770928 bytes
+sha256        : 06549B07E33232581117BB2A17BDFD6DBD02FBCAC31B0C475376C95F93693B02
 chunk size    : 20971520 bytes (20 MiB)
 parts         : 27
-tarball mtime : 2026-11-11T04:21:27.122Z
+tarball mtime : 2026-11-17T01:04:16.071Z
 
 part list:
   VektorSec-1.2.7-customer-linux-x64.tar.gz.001     20971520 bytes
@@ -34,7 +34,7 @@ part list:
   VektorSec-1.2.7-customer-linux-x64.tar.gz.024     20971520 bytes
   VektorSec-1.2.7-customer-linux-x64.tar.gz.025     20971520 bytes
   VektorSec-1.2.7-customer-linux-x64.tar.gz.026     20971520 bytes
-  VektorSec-1.2.7-customer-linux-x64.tar.gz.027     17461814 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.027     18511408 bytes
 
 join (Linux / macOS):  bash JOIN-linux.sh
 join (any OS):         cat VektorSec-1.2.7-customer-linux-x64.tar.gz.0* > VektorSec-1.2.7-customer-linux-x64.tar.gz

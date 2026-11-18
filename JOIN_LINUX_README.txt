@@ -2,8 +2,8 @@
 ======================================================================
 
 ไฟล์ที่ต้องมีให้ครบ : 27 พาร์ท (.001 ถึง 027)
-ขนาดหลังต่อเสร็จ   : 562,721,334 bytes
-SHA-256 ที่ถูกต้อง : 962E601E83BCA2DA47432EC2A13058AD6C0BB4F7F354E99B487290C8E664212D
+ขนาดหลังต่อเสร็จ   : 563,770,928 bytes
+SHA-256 ที่ถูกต้อง : 06549B07E33232581117BB2A17BDFD6DBD02FBCAC31B0C475376C95F93693B02
 
 ---------------------------------------------------------------------
 1) ต่อพาร์ทกลับเป็นไฟล์เดียว
@@ -72,7 +72,7 @@ considered secure) ดูวิธีแก้ใน INSTALL-linux.md หัว�
 อัปเดตเวอร์ชันถัดไป: แตกทาร์บอลใหม่แล้ว  sudo bash install.sh  (ทับของเดิมได้เลย)
 ข้อมูลเดิม + license.key อยู่ที่ /var/lib/vektorsec/data → ไม่ถูกเขียนทับ
 
-คู่มือเต็ม: INSTALL-linux.md (ไทย) · INSTALL-linux.en.md (English)
+คู่มือเต็ม: INSTALL-linux.md (ไทย) · INSTALL-linux.en.md (English) · README.md
 
 ---------------------------------------------------------------------
 Parts
@@ -103,6 +103,6 @@ Parts
   VektorSec-1.2.7-customer-linux-x64.tar.gz.024     20971520 bytes
   VektorSec-1.2.7-customer-linux-x64.tar.gz.025     20971520 bytes
   VektorSec-1.2.7-customer-linux-x64.tar.gz.026     20971520 bytes
-  VektorSec-1.2.7-customer-linux-x64.tar.gz.027     17461814 bytes
+  VektorSec-1.2.7-customer-linux-x64.tar.gz.027     18511408 bytes
 
 ⚠️ Acceptable use: VektorSec is for authorized security testing only.

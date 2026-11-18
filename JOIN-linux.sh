@@ -5,7 +5,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 BASE="VektorSec-1.2.7-customer-linux-x64.tar.gz"
-EXPECTED="962E601E83BCA2DA47432EC2A13058AD6C0BB4F7F354E99B487290C8E664212D"
+EXPECTED="06549B07E33232581117BB2A17BDFD6DBD02FBCAC31B0C475376C95F93693B02"
 
 # every part must be there before concatenating: a missing .0XX would silently
 # produce a shorter file and only the hash check would catch it
