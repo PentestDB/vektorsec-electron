@@ -2,91 +2,41 @@
 =====================================================================
 
 ไฟล์เต็ม (full file) : VektorSec-Setup-1.2.7-customer.exe
-ขนาด (size)         : 352,176,754 bytes (≈ 336 MB)
-จำนวนพาร์ท (parts)   : 17 ไฟล์ × 20 MB (20,971,520 bytes)
-SHA-256 ของไฟล์เต็ม  : 5F70317F07B2E6C531437E04F11EEF2075285DBC950638BD2C23BEF0E30F060A
+ขนาด (size)         : 352,491,252 bytes (≈ 336 MB)
+จำนวนพาร์ท (parts)   : 17 ไฟล์ × 20 MB (20 MiB = 20,971,520 bytes)
+SHA-256 ของไฟล์เต็ม  : 1030812994B4C7C78B6D9F6EAF59402D58CC54E641EC38CC8C5CDE2D98049429
 
-⚠️ ต้องมีครบทั้ง 17 ไฟล์ก่อนต่อ (all 17 parts are required).
+ต้องมีครบทั้ง 17 ไฟล์ก่อนต่อ (all 17 parts are required).
 
 ---------------------------------------------------------------------
-วิธีต่อไฟล์ (Windows) — เลือก 1 วิธี
+1) วิธีต่อไฟล์ (Windows) — เลือก 1 วิธี
 ---------------------------------------------------------------------
 
 [A] ดับเบิลคลิก JOIN.bat   ← ง่ายที่สุด (ต่อไฟล์ + ตรวจ SHA-256 ให้เลย)
     ต้องวางไฟล์ VektorSec-Setup-1.2.7-customer.exe.001 … .017 ไว้ในโฟลเดอร์เดียวกัน
 
 [B] Command Prompt (cmd) — เข้าไปในโฟลเดอร์นี้แล้วรัน:
-    copy /b VektorSec-Setup-1.2.7-customer.exe.001+VektorSec-Setup-1.2.7-customer.exe.002+VektorSec-Setup-1.2.7-customer.exe.003+...+"VektorSec-Setup-1.2.7-customer.exe" VektorSec-Setup-1.2.7-customer.exe
+    copy /b VektorSec-Setup-1.2.7-customer.exe.001+VektorSec-Setup-1.2.7-customer.exe.002+...+"VektorSec-Setup-1.2.7-customer.exe" VektorSec-Setup-1.2.7-customer.exe
 
-[C] PowerShell:
-    $parts = Get-ChildItem 'VektorSec-Setup-1.2.7-customer.exe.0*' | Sort-Object Name
-    $out = [System.IO.File]::Create("$PWD\VektorSec-Setup-1.2.7-customer.exe")
-    foreach ($p in $parts) { $fs = [System.IO.File]::OpenRead($p.FullName); $fs.CopyTo($out); $fs.Close() }
-    $out.Close()
-
-[D] 7-Zip: คลิกขวาที่ไฟล์ VektorSec-Setup-1.2.7-customer.exe.001 → 7-Zip → Extract here (7-Zip ต่อให้อัตโนมัติ)
+[C] 7-Zip: คลิกขวาที่ไฟล์ VektorSec-Setup-1.2.7-customer.exe.001 → 7-Zip → Extract here
 
 ---------------------------------------------------------------------
-ตรวจสอบความถูกต้อง (verify) — ต้องได้ค่านี้
+2) ตรวจสอบความถูกต้อง (verify) — ต้องได้ค่านี้
 ---------------------------------------------------------------------
+
     Get-FileHash .\VektorSec-Setup-1.2.7-customer.exe -Algorithm SHA256
-    5F70317F07B2E6C531437E04F11EEF2075285DBC950638BD2C23BEF0E30F060A
+    1030812994B4C7C78B6D9F6EAF59402D58CC54E641EC38CC8C5CDE2D98049429
 
-หรือ (ไม่ต้องเปิด PowerShell):
-    certutil -hashfile VektorSec-Setup-1.2.7-customer.exe SHA256
-
-ถ้า hash ไม่ตรง → ไฟล์พาร์ทใดพาร์ทหนึ่งเสีย/โหลดไม่ครบ ให้โหลดพาร์ทนั้นใหม่
-ถ้า hash ตรง → ดับเบิลคลิกไฟล์ .exe เพื่อติดตั้งได้เลย (อ่านวิธีติดตั้งใน README.md)
+ถ้า hash ไม่ตรง → พาร์ทใดพาร์ทหนึ่งโหลดไม่ครบ ให้เทียบขนาดกับ MANIFEST.txt แล้วโหลดใหม่
+ถ้า hash ตรง → ดับเบิลคลิกไฟล์ .exe เพื่อติดตั้งได้เลย (ดู README.md)
 
 ---------------------------------------------------------------------
-ติดตั้งทับรุ่นเดิม (upgrade) — ทำแบบนี้ทุกครั้ง
----------------------------------------------------------------------
-1) ปิดแอป VektorSec ให้สนิทก่อน (ตรวจใน Task Manager ว่าไม่มี VektorSec.exe /
-   node.exe ของ gateway เหลืออยู่) — ถ้าเปิดค้างไว้ ตัวติดตั้งจะเขียนไฟล์ทับไม่ได้
-   แล้วจะดูเหมือน " reinstalled แต่ไม่เปลี่ยน "
-2) ดับเบิลคลิกตัวติดตั้งที่ต่อเสร็จแล้ว → ติดตั้งทับตำแหน่งเดิมได้เลย
-3) เปิดแอปใหม่ ตรวจว่ารุ่นที่ Settings/หน้าแรกตรงกับ 1.2.7
-
----------------------------------------------------------------------
-ถ้า MongoDB ไม่ยอมสตาร์ท — ต้องลง Microsoft Visual C++ (x64)
+3) License (สำคัญ)
 ---------------------------------------------------------------------
 
-ตัว VektorSec (Electron) และ Redis ไม่ต้องใช้ VC++ แต่ MongoDB 7.0 ต้องใช้
-(mongod.exe อ้างอิง MSVCP140.dll / VCRUNTIME140.dll / VCRUNTIME140_1.dll)
+บิลด์ลูกค้าเป็นแบบ 'จ่ายเงินเท่านั้น' — ครั้งแรกจะเจอหน้า Activation:
+คัดลอก Machine ID (HWID) ส่งให้ผู้ขาย → รับคีย์ VEKL1.… → Activate (1 คีย์ = 1 เครื่อง)
 
-1) เช็กว่ามีอยู่แล้วหรือยัง — พิมพ์อะไรออกมา = มีแล้ว ข้ามได้:
-   (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64' -EA SilentlyContinue).Version
-
-2) ถ้าไม่มี ให้รันตัวติดตั้งที่แถมมากับ zip ของ MongoDB
-   (ตัวนี้ต้องกด Yes ที่ UAC / Administrator — ขั้นตอนเดียวในคู่มือที่ต้องใช้ admin):
-   & "$env:APPDATA\VektorSec\runtime\mongodb\bin\vc_redist.x64.exe"
-
-3) สั่งฐานข้อมูลใหม่:
-   powershell -ExecutionPolicy Bypass -File "$env:LOCALAPPDATA\Programs\VektorSec\resources\app\scripts\local-db.ps1" start
-
-อาการที่บอกว่ายังขาด VC++: mongod.exe ปิดตัวเองทันที · local-db.ps1 status
-ขึ้น 27017 ปิดอยู่ · Event Viewer ฟ้อง MSVCP140.dll / VCRUNTIME140.dll หาไม่เจอ
-(บนเครื่องที่ไม่มีเน็ต ไฟล์ vc_redist.x64.exe ตัวนี้อยู่ใน zip ของ MongoDB ที่คัดลอกมา)
-
----------------------------------------------------------------------
-Parts
----------------------------------------------------------------------
-  VektorSec-Setup-1.2.7-customer.exe.001     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.002     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.003     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.004     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.005     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.006     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.007     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.008     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.009     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.010     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.011     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.012     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.013     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.014     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.015     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.016     20971520 bytes
-  VektorSec-Setup-1.2.7-customer.exe.017     16632434 bytes
+คู่มือเต็ม: INSTALL.md (Windows) · README.md · README.th.md
 
 ⚠️ Acceptable use: VektorSec is for authorized security testing only.
