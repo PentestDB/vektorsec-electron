@@ -113,6 +113,7 @@ inside the app downloads portable builds into your profile and starts them.
 $install = Join-Path $env:LOCALAPPDATA 'Programs\VektorSec'
 
 # one time: downloads MongoDB 7.0 + Redis 5.0 (~5 minutes) and starts both
+ogram Files\VektorSec'
 powershell -ExecutionPolicy Bypass -File "$install\resources\app\scripts\local-db.ps1" install
 
 # confirm both servers are listening
